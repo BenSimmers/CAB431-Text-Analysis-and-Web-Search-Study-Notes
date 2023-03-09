@@ -80,14 +80,10 @@ HTML is a language for marking up text for presentation in web browsers - with a
 - Example XML document:
 
 ```
-<?xml version="1.0"?>
-<Staff room=“S1024” phone=“31385212” email=“y2.li@qut.edu.au”>
-<name> Yuefeng Li </name>
-<position> Professor </position>
-<unit id = “CAB431”> Search Engine Technology
-<description> an excellent course </description>
-</unit>
-</Staff>
+<student>
+  <name>John Doe</name>
+  <age>30</age>
+  <address>1234 Some Street, Brisbane, QLD, 4000</address>
 ```
 
 - XML is essentially about content e.g. <name> Yuefeng Li </name> states this element is a name, it does not describe how to present it
