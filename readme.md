@@ -86,11 +86,8 @@ HTML is a language for marking up text for presentation in web browsers - with a
   <address>1234 Some Street, Brisbane, QLD, 4000</address>
 ```
 
-- XML is essentially about content e.g. <name> Yuefeng Li </name> states this element is a name, it does not describe how to present it
-- HTML is about presentation: e.g.
-- <B> Yuefeng Li </B> states that the text “Yuefeng Li” should be presented bold – we do not know it’s a name!
-- <A HREF="http://www.w3.org/">W3C</A> states a hyperlink and anchor text.
-
+- XML is essentially about content it does not describe how to present it
+- HTML is about presentation
 
 ## XML: Extensible Markup Language
 - what is xml
