@@ -87,6 +87,7 @@ HTML is a language for marking up text for presentation in web browsers - with a
   <name>John Doe</name>
   <age>30</age>
   <address>1234 Some Street, Brisbane, QLD, 4000</address>
+</student>
 ```
 
 - XML is essentially about content it does not describe how to present it
@@ -648,14 +649,11 @@ additional text field
 effectiveness for some types of queries.
 
 _________
-
 # Week 3 Search Engine Technology
 _________
-
 # Week 4 Information Retrieval Models
 _________
-
 # Week 5 - Document Representation
 _________
-
 # Week 6 - Evaluation
+_________
