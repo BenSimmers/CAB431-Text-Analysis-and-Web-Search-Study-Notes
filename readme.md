@@ -1,4 +1,7 @@
 # Cab431 - Text Analysis and Web Search
+## Use Documentation for code examples
+Documentation for code examples is generated using [pdoc](https://pdoc3.github.io/pdoc/). You can view the documentation by opening the html files in the browser or by running the following command in the root directory of the project.
+
 
 Everything written here is based off the QUT course content. However, there are at times parts of text that are taken from the QUT slides and most of the examples are directly from the course slides (these are referenced when done). This content is designed only for those currently studying an IT degree at QUT, do not share these resources with anyone outside of this community.
 
@@ -644,10 +647,15 @@ additional text field
 - Retrieval experiments have shown that anchor text has significant impact on
 effectiveness for some types of queries.
 
+_________
+
 # Week 3 Search Engine Technology
+_________
 
 # Week 4 Information Retrieval Models
+_________
 
 # Week 5 - Document Representation
+_________
 
 # Week 6 - Evaluation

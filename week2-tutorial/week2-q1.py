@@ -1,18 +1,10 @@
 from bs4 import BeautifulSoup
 
-
-## Initial Solution ##
-# def extract_xml(filename):
-#   soup = BeautifulSoup(open(filename), 'lxml')
-#   texts = soup.find_all('text')
-#   for item in texts:
-#     num_of_words = len(item.text.split())
-#     itemid = item.parent['itemid']
-#   # print('Item ID: ' + itemid + ' Number of words: ' + str(num_of_words))
-#     print('Item ID: {} Number of words: {}'.format(itemid, num_of_words))
-
-
-## Refined Solution ##
+# Open the file and parse it using BeautifulSoup
+# Find all the text tags and loop through them
+# Count the number of words in each text tag
+# Print the itemid and the number of words
+## Note: this uses beautiful soup 4 # its not showing up in docs
 def extract_xml(filename):
     with open(filename) as f:
         soup = BeautifulSoup(f, 'lxml')

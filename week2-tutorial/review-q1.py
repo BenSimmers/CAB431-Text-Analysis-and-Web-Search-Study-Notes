@@ -1,7 +1,14 @@
 import matplotlib.pyplot as plt
 import re
 
-def review_question_1(filename):
+
+# read the xml file
+# count the number of words
+# count the number of terms
+# print the number of words and terms
+# print the top 10 terms and their frequencies
+# plot the top 10 terms and their frequencies
+def review_question_1(filename):    
     with open(filename, 'r') as f:
         file = f.readlines()
     doc = {}
