@@ -28,12 +28,10 @@ def parse_doc(input, stops):
         # print(curr_doc)
 
 
-
-        ## return (word_count, {itemid:curr_doc}) to a file
-
         with open('task1.json', 'w') as f:
-            f.write(str(word_count) + ' ' + str(len(curr_doc)) + ' ' + str({itemid:curr_doc}))
-
+            # f.write(str(word_count) + ' ' + str(len(curr_doc)) + ' ' + str({itemid:curr_doc}))
+            f.write(str ({"word count": word_count}))
+            f.write(str({itemid:curr_doc}))
     return (word_count, {itemid:curr_doc})
 # test
 if __name__ == '__main__':
@@ -41,4 +39,5 @@ if __name__ == '__main__':
     stops = open('common-english-words.txt', 'r').read().split() # stop words
     # parse a document
     input = '6146-1.xml'
-    print(parse_doc(input, stops))
+    # print(parse_doc(input, stops))
+    parse_doc(input, stops)
