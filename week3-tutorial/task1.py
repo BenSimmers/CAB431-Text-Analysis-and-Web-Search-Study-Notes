@@ -16,8 +16,8 @@ def parse_doc(input, stops):
         num_of_words = len(text.text.split())
         itemid = text.parent['itemid']
         word_count = num_of_words
-        text = re.sub(r'[^\w\s]', '', text.text)
-        text = re.sub(r'\d+', '', text)
+        text = re.sub(r'[^\w\s]', '', text.text) ## remove punctuation
+        text = re.sub(r'\d+', '', text) ## remove numbers
 
         text = [word for word in text.split() if word not in stops]
         for word in text:
@@ -26,6 +26,14 @@ def parse_doc(input, stops):
             else:
                 curr_doc[word] = 1
         # print(curr_doc)
+
+
+
+        ## return (word_count, {itemid:curr_doc}) to a file
+
+        with open('task1.json', 'w') as f:
+            f.write(str(word_count) + ' ' + str(len(curr_doc)) + ' ' + str({itemid:curr_doc}))
+
     return (word_count, {itemid:curr_doc})
 # test
 if __name__ == '__main__':
