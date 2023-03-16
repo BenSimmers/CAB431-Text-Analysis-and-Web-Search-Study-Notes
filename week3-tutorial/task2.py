@@ -4,7 +4,6 @@ from task1 import parse_doc
 # read an xml file and common-english-words.txt (the list of stopping words)
 # returns the number of words (word_count) and the number of terms (len(curr_doc))
 def main():
-
     stops = open('common-english-words.txt', 'r').read().split() # stop words
     input = '6146-1.xml'
     word_count, curr_doc = parse_doc(input, stops)

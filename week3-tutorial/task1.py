@@ -20,7 +20,6 @@ def parse_doc(input, stops):
         text = re.sub(r'\d+', '', text)
 
         text = [word for word in text.split() if word not in stops]
-
         for word in text:
             if word in curr_doc:
                 curr_doc[word] += 1
