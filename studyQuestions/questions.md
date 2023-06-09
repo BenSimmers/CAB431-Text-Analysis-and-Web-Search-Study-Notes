@@ -161,12 +161,12 @@ Design a python program to extract all hyperlinks (or destination links) in a ht
 
 ## Week 3 Review Questions
 ### Question 1. 
-(Indexing Process) Which of the following statements is false? and justify your answer.
-(1) The text transformation component transforms documents into index terms or features.
-(2) Index terms (e.g., words, sometimes simply referred to as “terms”) are the parts of a document that are stored in the index and used in searching
-(3) A “feature” is more often used in the field of machine learning to refer to a part of a text document that is used to represent its content, which also describes an index term.
-(4) Examples of other types of index terms or features are phrases, names of people, dates, and links in a web page.
-(5) The set of all the terms that are indexed for a document collection is called the index distribution.
+- (Indexing Process) Which of the following statements is false? and justify your answer.
+- (1) The text transformation component transforms documents into index terms or features.
+- (2) Index terms (e.g., words, sometimes simply referred to as “terms”) are the parts of a document that are stored in the index and used in searching
+- (3) A “feature” is more often used in the field of machine learning to refer to a part of a text document that is used to represent its content, which also describes an index term.
+- (4) Examples of other types of index terms or features are phrases, names of people, dates, and links in a web page.
+- (5) The set of all the terms that are indexed for a document collection is called the index distribution.
 
 Answer: 5 - sets are unique and cannot have duplicates therefore its an index vocabulary not a distribution, a distribution, distributes the indexes across computers in a cluster.
 
@@ -238,22 +238,22 @@ $$
 So 0.15 is the damping factor, 4 is the number of pages, 1 - 0.15 is the probability of a random surfer clicking on a link, 0.25 is the initial estimate of each page, 2 is the number of outgoing links from C.
 
 ### Question 3. There are some unique challenges to crawling web pages. Identify which of the following is FALSE. You also need to justify your answer.
-(1) The biggest problem is the sheer scale of the Web. There are at least tens of billions of pages on the Internet.
-(2) Web pages are usually under the control of the people building the search engine database.
-(3) The web crawler spends a lot of its time waiting for responses. It waits for the DNS
+- (1) The biggest problem is the sheer scale of the Web. There are at least tens of billions of pages on the Internet.
+- (2) Web pages are usually under the control of the people building the search engine database.
+- (3) The web crawler spends a lot of its time waiting for responses. It waits for the DNS
 server response, the connection to the web server to be acknowledged, and then the web page data to be sent from the server.
-(4) Web pages are constantly being added, deleted, and modified. To keep an accurate view of the Web, a web crawler must continually revisit pages it has already crawled to see if they have changed in order to maintain the freshness of the document collection.
+- (4) Web pages are constantly being added, deleted, and modified. To keep an accurate view of the Web, a web crawler must continually revisit pages it has already crawled to see if they have changed in order to maintain the freshness of the document collection.
 
 Answer: 2 - Web pages are usually under the control of the people building the search engine database. - this is false because web pages are not under the control of the people building the search engine database, they are under the control of the people who own the web pages. The search engine database is just a collection of web pages that have been crawled and indexed by the search engine. the search engine does not control the web pages. and the developers of the sites do not control the search engine database or vice versa.
 
 ### Question 4 - Removing Noise
 Many web pages contain text, links, and pictures that are not directly related to the main content of the page. Please identify which of the following statements is False and correct the false statement
 
-(1) A major component of the representation of a page used in a search engine is based on word counts; so, the presence of a large number of words unrelated to the main topic can be a problem.
-(2) The simple technique based on the observation is that there are less HTML tags in the text of the main content of typical web pages than there is in the additional material.
-(3) A document slope curve shows the cumulative distribution of tags in a web page as a function of the total number of tokens (words or other non-tag strings) in the page.
-(4) The main text content of the page corresponds to the “plateau” in the middle of the distribution. This flat area is relatively small because of the large amount of formatting and presentation information in the HTML source for the page.
-(5) The detection of the main content can then be viewed as an optimization problem where we find values of i and j to maximize both the number of non-tag tokens below i and above j and the number of tags between i and j.
+- (1) A major component of the representation of a page used in a search engine is based on word counts; so, the presence of a large number of words unrelated to the main topic can be a problem.
+- (2) The simple technique based on the observation is that there are less HTML tags in the text of the main content of typical web pages than there is in the additional material.
+- (3) A document slope curve shows the cumulative distribution of tags in a web page as a function of the total number of tokens (words or other non-tag strings) in the page.
+- (4) The main text content of the page corresponds to the “plateau” in the middle of the distribution. This flat area is relatively small because of the large amount of formatting and presentation information in the HTML source for the page.
+- (5) The detection of the main content can then be viewed as an optimization problem where we find values of i and j to maximize both the number of non-tag tokens below i and above j and the number of tags between i and j.
 
 Answer: 5 - The detection of the main content can be viewed as an optimization problem, where we find values of i and j to maximize the number of non-tag tokens between i and j, as well as the number of tags below i and above j.
 
@@ -263,10 +263,10 @@ Answer: 5 - The detection of the main content can be viewed as an optimization p
 ### Question 1.
 Which of the following descriptions is wrong? and justify your answer.
 
-(1) The Boolean retrieval model is also known as exact-match retrieval since documents are retrieved if they exactly match the query specification, and otherwise are not retrieved.
-(2) The process of developing queries with a focus on the size of the retrieved set has been called searching by numbers and is a consequence of the limitations of the Boolean retrieval model.
-(3) In a vector space model, documents and queries are assumed to be part of a t-dimensional vector space, where t is the number of index terms (words, stems, phrases, etc.).
-(4) There is an explicit definition of relevance in the vector space model.
+- (1) The Boolean retrieval model is also known as exact-match retrieval since documents are retrieved if they exactly match the query specification, and otherwise are not retrieved.
+- (2) The process of developing queries with a focus on the size of the retrieved set has been called searching by numbers and is a consequence of the limitations of the Boolean retrieval model.
+- (3) In a vector space model, documents and queries are assumed to be part of a t-dimensional vector space, where t is the number of index terms (words, stems, phrases, etc.).
+- (4) There is an explicit definition of relevance in the vector space model.
 
 Answer: 4 - There is an explicit definition of relevance in the vector space model. - this is wrong because there is no explicit definition of relevance in the vector space model. The vector space model is a model that is based on the idea that documents and queries are assumed to be part of a t-dimensional vector space, where t is the number of index terms (words, stems, phrases, etc) this means that there  is an implicit assumption that relevance is related to the similarity of query and document vectors.
 
@@ -284,10 +284,10 @@ $n(t)$ is the number of documents that contain term t
 
 ### Question 3. 
 Which of the following descriptions is wrong? and justify your answer.
-1) In the query likelihood retrieval model, documents are ranked by the probability that the query text could be generated by the document language model.
-(2) To use the unigram language model to estimate P(Q|D) - the document D’s score for the given query Q ={q1, q2, …, qn}, the language model probabilities P(qi|D) (i =1, 2, …, n) are needed to be estimated.
-(3) The major problem with the estimate of P(qi|D) is that if any of the query words are missing from the document, the score given by the query likelihood model for P(Q|D) will be zero.
-(4) Kullback-Leibler (KL) divergence is a technique for avoiding this estimation problem and overcoming data sparsity, which means that we typically do not have large amounts of text to use for the language model probability estimates
+- (1) In the query likelihood retrieval model, documents are ranked by the probability that the query text could be generated by the document language model.
+- (2) To use the unigram language model to estimate P(Q|D) - the document D’s score for the given query Q ={q1, q2, …, qn}, the language model probabilities P(qi|D) (i =1, 2, …, n) are needed to be estimated.
+- (3) The major problem with the estimate of P(qi|D) is that if any of the query words are missing from the document, the score given by the query likelihood model for P(Q|D) will be zero.
+- (4) Kullback-Leibler (KL) divergence is a technique for avoiding this estimation problem and overcoming data sparsity, which means that we typically do not have large amounts of text to use for the language model probability estimates
 
 Answer: 4: Kullback-leibler (KL) is not used as a technique for avoiding this estimation problem and overcoming data sparsity. its used to measure the difference between two probability distributions. The technique used to overcome data sparsity is called smoothing.
 
@@ -345,10 +345,10 @@ Answer: 1
 ## Week 5 Review Questions
 ### Question 1.
 Which of the following is wrong? and justify your answer.
-(1) A document feature is some attribute of the document we can express numerically.
-(2) A ranking function takes data from document features combined with the query and produces a score.
-(3) Topical features are the only features we can find in documents.
-(4) If a document gets a high score, this means that the system thinks that document is a good match for the query, whereas lower numbers mean that the system thinks the document is a poor match for the query.
+- (1) A document feature is some attribute of the document we can express numerically.
+- (2) A ranking function takes data from document features combined with the query and produces a score.
+- (3) Topical features are the only features we can find in documents.
+- (4) If a document gets a high score, this means that the system thinks that document is a good match for the query, whereas lower numbers mean that the system thinks the document is a poor match for the query.
 
 Answer: 3 - other things that can be used as features are:
 - document length
@@ -362,10 +362,10 @@ Answer: 3 - other things that can be used as features are:
 
 ### Question 2. 
 Which of the following is wrong? and justify your answer.
-(1) The index is inverted because usually we think of words being a part of documents, but if we invert this idea, documents are associated with words.
-(2) In an inverted index that contains only document information, i.e., the features are binary, meaning they are 1 if the document contains a term, 0 otherwise. This inverted index contains enough information to tell if the document contains the exact phrase “tropical fish”.
-(3) Each index term has its own inverted list that holds the relevant data for that term. Each list entry is called a posting, and the part of the posting that refers to a specific document or location is often called a pointer.
-(4) An extent is a contiguous region of a document. We can represent these extents using word positions.
+- (1) The index is inverted because usually we think of words being a part of documents, but if we invert this idea, documents are associated with words.
+- (2) In an inverted index that contains only document information, i.e., the features are binary, meaning they are 1 if the document contains a term, 0 otherwise. This inverted index contains enough information to tell if the document contains the exact phrase “tropical fish”.
+- (3) Each index term has its own inverted list that holds the relevant data for that term. Each list entry is called a posting, and the part of the posting that refers to a specific document or location is often called a pointer.
+- (4) An extent is a contiguous region of a document. We can represent these extents using word positions.
 
 
 Answer: 2 - With binary features, we can only tell if the document contains the term, but not how many times it occurs. If a document contains the term 10 times, or 100 times, or 1000 times, we cannot tell the difference. We can only tell that it contains the term or the exact phrase. e.g. "tropical" and  fish" could be in the document, but not "tropical fish" together.
@@ -431,10 +431,10 @@ The partial scores are the number of times the query term occurs in the document
 ## Week 6 Review Questions
 ### Question 1. 
 Which of the following are False? and justify your answer?
-(1) For a very large data collection, pooling technique is used to select top-k results from the rankings obtained by different retrieval algorithms. The results are merged into a pool, duplicates are removed, and the documents are presented in some random order to the people doing the relevance judgments.
-(2) Pooling produces a large number of relevance judgments for each query. However, this list is incomplete, and for a new retrieval algorithm that had not contributed documents to the original pool, this could potentially be a problem.
-(3) Many user actions (e.g., Query log data) can be considered implicit relevance judgments. The main drawback with this data is that it is not as precise as explicit relevance judgments.
-(4) A typical query log does not contain user identifier or user session identifier because of the privacy issue.
+- (1) For a very large data collection, pooling technique is used to select top-k results from the rankings obtained by different retrieval algorithms. The results are merged into a pool, duplicates are removed, and the documents are presented in some random order to the people doing the relevance judgments.
+- (2) Pooling produces a large number of relevance judgments for each query. However, this list is incomplete, and for a new retrieval algorithm that had not contributed documents to the original pool, this could potentially be a problem.
+- (3) Many user actions (e.g., Query log data) can be considered implicit relevance judgments. The main drawback with this data is that it is not as precise as explicit relevance judgments.
+- (4) A typical query log does not contain user identifier or user session identifier because of the privacy issue.
 
 Answer: 4 - is false because a typical query can contain a user identifier or user session identifier. This is because the user identifier or user session identifier is not considered private information. Privacy is only an issue when this sort of data is used to identify a user or is distributed for research (or other) purposes.
 
@@ -485,10 +485,10 @@ Table 2. IR Model1’s Output (ranked by weight)
 
 Assume A is the relevant set of documents for topic 101, A’ is the non-relevant set. We also assume IR model1 selects top-6 as the relevant documents B (i.e., the set of retrieved documents), and B’ is the set of documents that are not retrieved
 
-(1) List all sets’ elements and enclose them in braces.
-(2) Calculate recall and precision of IR model1.
-(3) Calculate false positive and false negative of IR model1.
-(4) Calculate IR model1’s F1 measure.
+- (1) List all sets’ elements and enclose them in braces.
+- (2) Calculate recall and precision of IR model1.
+- (3) Calculate false positive and false negative of IR model1.
+- (4) Calculate IR model1’s F1 measure.
 
 
 Asnwer:
