@@ -917,4 +917,78 @@ C(`<t4 t6>`)= termset([2,3,4])= `<t3 t4 t6> != <t4 t6>`
 - Too much shit to copy over :)
 - just look at the review q's
 
-## Week 11 Review Questions
+### Week 11 Review Questions
+Question 1. Assume C is a collection of tweets. We can use the following query likelihood method to calculate the probability of a tweet d occurring for a given query Q.
+![img](week11.png)
+
+Let |d| and |Q| are the respective lengths (size) of the tweet d and query Q, and μ is the smoothing parameter. Interpret the meaning of c(w, d), c(w, Q), and P(w|C).
+
+Answer:
+So based on the equation we know that Q is a query, word w count
+
+so 
+c(w,d) is the count of word w in document d
+
+c(w, Q) is the count of word in a query Q
+
+P(w|C) is the probability of a word in the collection
+
+### Question 2.
+Which of the following is false for sentiment analysis? and justify your answer
+- (1) Sentiment analysis (opinion mining) discovers users’ opinions about products or services in on-line reviews or feedback or observes trends in public mood to analysis of clinical records.
+
+- (2) The orientation is the opinion provided about the entity and/or the aspect that was provided by the opinion holder at a specific time.
+
+- (3) The goal of emotion classification is to separate subjective from objective information, a binary classification task.
+
+- (4) Aspects are features, components or functions of the entity. They can be nouns and/or noun phrases
+
+- (5) Polarity classification is to group the expressed opinion in a document, a sentence or an entity feature/aspect in positive, negative or neutral regions.
+
+Answer:
+(3) The goal of emotion classification is to separate subjective from objective information, a binary classification task.
+
+
+### Question 3.
+- did not understand the question go back to later
+![img](week11q3.png)
+
+Answer:
+![img](q3answer.png)
+
+### Question 4.
+Collaborative filtering leverages relationships between users to improve how items (documents) are matched to users (profiles). The figure below shows a group of users and their ratings for an item. The user with the question mark above its head has not rated this item yet. The goal of the recommendation algorithm is to fill in these question marks.
+
+![img](13q4.png)
+
+
+Suppose your team wants to design functions to implement a collaborative filtering-based recommender system, and your task is to determine the function name and its input and output data structures. For privacy reasons, you can use only numbers or IDs to represent users, such as 1 or u1, 2 or u2, etc.; for items, you can use numbers or their names; and ratings are expressed as integers (e.g., 0 to 5).
+
+Answer:
+```python
+# function name: collaborative_filtering
+# input: user, item
+# output: rating
+
+# The common similarity measures used for clustering users is the correlation measure.
+# Typically, users are represented by their rating vectors of items.
+# We use a list of lists Rvs to represent rating vectors for all users
+
+
+# for example
+# I = [0,1,2,3] # 4 items in I numbered from 0 to 3 – a list
+# U = [0,1,2,3,4] # 5 users in U numbered from 0 to 4 – a list
+# Rvs = [[1,2,1,0], [0,1,1,1], [2,1,3,5], [1,0,2,0], [0,2,3,4]] – a list of lists
+# 5 users' rating vectors for 4 items, where 0 means the user has not yet rated the item.
+
+def collaborative_filtering(user, item) -> rating:
+    # find the users who have rated the item
+    U = [0,1,2,3,4]
+    Rvs = [[1,2,1,0], [0,1,1,1], [2,1,3,5], [1,0,2,0], [0,2,3,4]]
+    Uc = [0,1,2,3,4]
+    # find the most similar user to the given user
+    # return the rating of the item by the most similar user
+    return rating
+
+
+```
