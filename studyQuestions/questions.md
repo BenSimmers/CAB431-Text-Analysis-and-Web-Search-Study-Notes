@@ -398,7 +398,7 @@ where fi is the document topical feature function (the value of fi(D) is term ti
 Answer:
 What are the query terms? freshwater, fish, aquarium, tropical
 so lets look for those in the table
-
+```
 L1 – freshwater 1:1 4:1
 L2 – aquarium 3:1
 L3 - fish 1:2 2:3 3:2 4:2
@@ -425,12 +425,448 @@ Old Partial scores 1:3 2:3 3:3 4:3
 L4 - 1:2 2:2 3:1
 new partial scores 1:5 2:5 3:4 4:3
 The partial scores are the number of times the query term occurs in the document. So freshwater occurs once in document 1, and once in document 4. So the partial scores are 1:1 4:1
-
+```
 
 
 ## Week 6 Review Questions
+### Question 1. 
+Which of the following are False? and justify your answer?
+(1) For a very large data collection, pooling technique is used to select top-k results from the rankings obtained by different retrieval algorithms. The results are merged into a pool, duplicates are removed, and the documents are presented in some random order to the people doing the relevance judgments.
+(2) Pooling produces a large number of relevance judgments for each query. However, this list is incomplete, and for a new retrieval algorithm that had not contributed documents to the original pool, this could potentially be a problem.
+(3) Many user actions (e.g., Query log data) can be considered implicit relevance judgments. The main drawback with this data is that it is not as precise as explicit relevance judgments.
+(4) A typical query log does not contain user identifier or user session identifier because of the privacy issue.
+
+Answer: 4 - is false because a typical query can contain a user identifier or user session identifier. This is because the user identifier or user session identifier is not considered private information. Privacy is only an issue when this sort of data is used to identify a user or is distributed for research (or other) purposes.
+
+### Question 2. (Effectiveness Metrics)
+
+Assume Table 1 illustrates the relevant judgments for documents 110 to 124 about topic 101, where 1 means the corresponding document is relevant and 0 means non-relevant; and Table 2 shows IR model1’s output, where documents are sorted according to their weights.
+
+![image](weekk6q2.png)
+
+Table 1. Relevant Judgements 
+| TOPIC | DocNo | Rel |
+|-------|-------|-----|
+| 101   | 110   | 1   |
+| 101   | 111   | 1   |
+| 101   | 112   | 0   |
+| 101   | 113   | 1   |
+| 101   | 114   | 1   |
+| 101   | 115   | 0   |
+| 101   | 116   | 1   |
+| 101   | 117   | 1   |
+| 101   | 118   | 0   |
+| 101   | 119   | 1   |
+| 101   | 120   | 0   |
+| 101   | 121   | 0   |
+| 101   | 122   | 0   |
+| 101   | 123   | 1   |
+| 101   | 124   | 0   |
+
+Table 2. IR Model1’s Output (ranked by weight)
+| TOPIC | DocNo | Weight |
+|-------|-------|--------|
+| 101   | 111   | 0.812  |
+| 101   | 112   | 0.790  |
+| 101   | 113   | 0.689  |
+| 101   | 110   | 0.542  |
+| 101   | 114   | 0.496  |
+| 101   | 119   | 0.455  |
+| 101   | 115   | 0.321  |
+| 101   | 122   | 0.300  |
+| 101   | 118   | 0.278  |
+| 101   | 116   | 0.234  |
+| 101   | 123   | 0.211  |
+| 101   | 121   | 0.201  |
+| 101   | 120   | 0.189  |
+| 101   | 117   | 0.176  |
+| 101   | 124   | 0.123  |
+
+
+Assume A is the relevant set of documents for topic 101, A’ is the non-relevant set. We also assume IR model1 selects top-6 as the relevant documents B (i.e., the set of retrieved documents), and B’ is the set of documents that are not retrieved
+
+(1) List all sets’ elements and enclose them in braces.
+(2) Calculate recall and precision of IR model1.
+(3) Calculate false positive and false negative of IR model1.
+(4) Calculate IR model1’s F1 measure.
+
+
+Asnwer:
+
+1. A = {110, 111,113, 114, 116, 117, 119, 123}, this is the set of relevant documents for topic 101
+2. B = {111, 112, 113, 110, 114, 119}, this is the set of retrieved documents for topic 101 in table 2
+3. A' = {112, 115, 118, 120, 121, 122, 124}, this is the set of non-relevant documents for topic 101
+4. B' = {115, 116, 117, 118, 120, 121, 122, 124}, this is the set of the other non-retrieved documents for topic 101 in table 2
+
+2.
+$$
+Recall = \frac{|A \cap B|}{|A|} = |{110, 111, 113, 114, 119}| / |A| = 5/8 = 0.625 or 62.5\%
+$$
+What this means is that $A \cap B$  means the intersection of A and B, which is the set of relevant documents that were retrieved.
+so 110, 111, 113, 114, 119 appear in both A and B, so the intersection is 5. The size of A is 8, so the recall is 5/8.
+
+$$
+Precision = \frac{|A \cap B|}{|B|} = |{110, 111, 113, 114, 119}| / |B| = 5/6 = 0.833 or 83.3\%
+$$
+
+What this means is that $A \cap B$  means the intersection of A and B, which is the set of relevant documents that were retrieved.
+so 110, 111, 113, 114, 119 appear in both A and B, so the intersection is 5. The size of B is 6, so the precision is 5/6.
+
+3. 
+$$
+FP = Fallout = \frac{|A' \cap B |}{|A'|} = |{112}| / |A'| = 1/7 = 0.143 or 14.3\%
+$$
+What this means is that $A' \cap B$  means the intersection of A' and B, which is the set of non-relevant documents that were retrieved.
+so 112 appears in both A' and B, so the intersection is 1. The size of A' is 7, so the fallout is 1/7.
+
+$$
+FN = \frac{|A \cap B'|}{|A|} = |{116, 117, 123}| / |A| = 3/8 = 0.375 or 37.5\%
+$$
+
+What this means is that $A \cap B'$  means the intersection of A and B', which is the set of relevant documents that were not retrieved.
+
+so 116, 117, 123 appear in both A and B', so the intersection is 3. The size of A is 8, so the fallout is 3/8.
+
+4. 
+$$
+F1 = 2 * Recall * Precision / (Recall + Precision) = 2*(5/8) (5/6) / (5/8 + 5/6) = 10/14 = 71.43%
+$$
+
+### Question 3.
+For the give relevance judgment (Table 1) and the ranked output of IR model1 (Table 2)
+
+(1) Calculate IR model1’s precision at rank 6 (position 6) and precision at rank 10 (position 10).
+(2) Calculate IR model1’s average precision.
+
+Answer:
+1.
+precision at rank 6 = 83.33% (see question 2 solution)
+We can see that the first 6 documents are all relevant, so the precision at rank 6 is 5/6 = 83.33%
+
+2.
+IR model1’s ranked output:
+
+111 112 113 110 114 119 115 122 118 116 123 121 120 117 124
+1 0.5 2/3 ¾ 4/5 5/6 5/7 5/8 5/9 0.6 7/11 7/12 7/13 8/14 8/15
+
+How do we get the fractions: 1 0.5 2/3 ¾ 4/5 5/6 5/7 5/8 5/9 0.6 7/11 7/12 7/13 8/14 8/15
+
+we get those fractions by looking at the first 6 documents, and seeing how many of them are relevant. We can see that the first 6 documents are all relevant, so the precision at rank 6 is 5/6 = 83.33%
+
+We can see that the first 10 documents are all relevant, so the precision at rank 10 is 10/10 = 100%
+
+Average Precision = (1 + 2/3 + ¾ + 4/5 + 5/6 + 0.6 + 7/11 + 8/14) / 8 = (1+ 0.667 + 0.75 + 0.8 + 0.833 + 0.6 + 0.636 + 0 571) / 8 = 73.21%
+
+### Question 4
+
+MAP is the average of the average precision for each query. So we need to calculate the average precision for each query, and then take the average of those.
+
+1. Average Precision query and 2 and get the average of both
+So what we do is we sum up the precision of each document and average by how many found docs there are.
+So:
+$$
+(1.0 + 0.67 + 0.5 + 0.44 + 0.5) / 5 = 0.622
+$$
+
+So what we do is we sum up the precision of each document and average by how many found docs there are.
+So:
+$$
+(0.5 + 0.4 + 0.43) / 3 = 0.443
+$$
+
+now to find the average we take:
+$$
+(0.622 + 0.443) / 2 = 0.5325
+$$ 
+
+2. For query 1, list the elements of S in curly braces 
+S= {(0.2, 1.0), (0.2, 0.5), (0.4, 0.67), (0.4, 0.5), (0.4, 0.4), (0.6, 0.5), (0.6, 0.43), (0.6, 0.38), (0.8, 0.44), (1.0, 0.5)}
+
+
+3. Calculate query 1’s precision P at any standard recall level R
+
+```
+For recall level 0, we have {P’: R’ ³ 0 Ù (R’, P’) ÎS} = {1.0, 0.5, 0.67, 0.4, 0.43, 0.38, 0.44}
+For recall level 0.1, we have {P’: R’ ³ 0.1 Ù (R’, P’) ÎS} = {1.0, 0.5, 0.67, 0.4, 0.43, 0.38, 0.44}
+For recall level 0.2, we have {P’: R’ ³ 0.2 Ù (R’, P’) ÎS} = {1.0, 0.5, 0.67, 0.4, 0.43, 0.38, 0.44}
+max{1.0, 0.5, 0.67, 0.4, 0.43, 0.38, 0.44} = 1.0.
+So, P(0) = P(0.1) = P(0.2) = 1.0
+For recall level 0.3, we have {P’: R’ ³ 0.3 Ù (R’, P’) ÎS} = {0.67, 0.5, 0.4, 0.43, 0.38, 0.44}
+For recall level 0.4, we have {P’: R’ ³ 0.4 Ù (R’, P’) ÎS} = {0.67, 0.5, 0.4, 0.43, 0.38, 0.44}
+max{0.67, 0.5, 0.4, 0.43, 0.38, 0.44}=0.67
+So, P(0.3) = P(0.4) = 0.67
+For recall level 0.5, we have {P’: R’ ³ 0.5 Ù (R’, P’) ÎS} = {0.5, 0.43, 0.38, 0.44}
+For recall level 0.6, we have {P’: R’ ³ 0.6 Ù (R’, P’) ÎS} = {0.5, 0.43, 0.38, 0.44}
+max{0.5, 0.43, 0.38, 0.44} = 0.5
+So, P(0.5) = P(0.6) = 0.5
+For recall level 0.7, we have {P’: R’ ³ 0.7 Ù (R’, P’) ÎS} = {0.44, 0.5}
+For recall level 0.8, we have {P’: R’ ³ 0.8 Ù (R’, P’) ÎS} = {0.44, 0.5}
+max{0.44, 0.5}=0.5
+So, P(0.7) = P(0.8) = 0.5
+For recall level 0.9, we have {P’: R’ ³ 0.7 Ù (R’, P’) ÎS} = {0.5}
+For recall level 1.0, we have {P’: R’ ³ 0.8 Ù (R’, P’) ÎS} = {0.5}
+max{0.5} = 0.5
+So, P(0.9) = P(1.0) = 0.5
+```
+
+4. ssume S is represented as a list of recall-precision pairs, e.g., S = [(0.2, 1.0), (0.2, 0.5), (0.4, 0.67), (0.4, 0.5), (0.4, 0.4), (0.6, 0.5), (0.6, 0.43), (0.6, 0.38), (0.8, 0.44), (1.0, 0.5)]. Define a list comprehension to calculate precisions at all standard recall levels.
+
+```python
+[max([p for (r, p) in S if r >= R/10]) for R in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]]
+# we find the max of the precision for each recall level by filtering out the ones that are less than the recall level
+```
+
+
 ## Week 7 Review Questions
+### Question 1. 
+Which of the following is False? And justify your answer: 
+(1) A stem class is the group of words that will be transformed into the same stem by the stemming algorithm. <br />
+(2) The most common measure for comparing words (or more generally, strings) is the edit distance, which is the number of operations required to transform one of the words into the other. <br />
+(3) The Damerau-Levenshtein distance metric counts the maximum number of insertions, deletions, substitutions, or transpositions of single characters required to do the transformation.<br />
+(4) A variety of techniques and data structures have been used to speed up the calculation of edit distances between the misspelled word and the words in the dictionary. These include restricting the comparison to words that start with the same letter (since spelling errors rarely change the first letter), words that are of the same or similar length (since spelling errors rarely change the length of the word), and words that sound the same. <br />
+
+Answer: 3 is false. because the Damerau-Levenshtein distance metric counts the minimum not maximum number of insertions, deletions, substitutions, or transpositions of single characters required to do the transformation.
+
+
+### Question 2
+Consider the spelling error “fish tink” given by a user. We want to select the best correction of “tink” from {“tank”, “think”} words with edit distance 1. Assume all words with same edit distance have same probability and the words “tank” and “think” are quite common and have very similar priori probabilities, i.e., P(tank) = P(think).
+
+Based on the noisy channel model and these assumptions, we are likely select tank (rather than think) as the correction of tink. Please justify this statement.
+
+Answer: 
+We have the misspelled word "tink" and two possible corrections: "tank" and "think." We want to determine which correction is more likely based on the noisy channel model and certain assumptions.
+
+According to the noisy channel model and Bayes' rule, the probability of the correct word being "w" given the observed misspelling "e" can be calculated as:
+
+P(w|e) ∝ P(e|w)P(w)
+
+To calculate this, we consider the likelihood of observing the misspelling "e" given the correct word "w" (P(e|w)) and the prior probability of the word "w" being the correct choice (P(w)).
+
+In our case, we assume that both "tank" and "think" have the same probability of being misspelled as "tink." So P(tink|tank) = P(tink|think).
+
+We also assume that the prior probabilities of "tank" and "think" are similar, i.e., P(tank) = P(think).
+
+Now, we need to consider the context of the word before the misspelling, which is "fish." We can express the prior probability as a mixture of the probability of the word occurring independently and the probability of it occurring following the previous word:
+
+P(w) = λP(w) + (1 - λ)P(w|w_p)
+
+Here, λ is a weighting factor between 0 and 1, and w_p represents the previous word.
+
+Using these equations, we can calculate:
+
+P(tank|tink) = P(tink|tank) * P(tank) = P(tink|tank) * (λP(tank) + (1 − λ)P(tank|fish))
+P(think|tink) = P(tink|think) * P(think) = P(tink|think) * (λP(think) + (1 − λ)P(think|fish))
+
+Since P(tink|tank) = P(tink|think) and P(tank) = P(think) based on our assumptions, the only difference lies in the probabilities P(tank|fish) and P(think|fish).
+
+If we have prior knowledge that P(tank|fish) > P(think|fish) in a collection of documents, then P(tank|tink) > P(think|tink) is very likely.
+
+Therefore, based on the assumptions and the probability distribution, we can conclude that "tank" is the more probable correction for the misspelling "tink" in this scenario.
+
+### Question 3
+For two words (or terms) a and b, their mutual information measure (MIM) is defined as
+$$
+\log \frac{P(a, b)}{P(a) P(b)}
+$$
+
+where P(a) is the probability that word a occurs in a text window of a given size, P(b) is the probability that word b occurs in a text window, and P(a, b) is the probability that a and b occur in the same text window. 
+
+Assume a function df(docs, a) is defined to calculate the number of documents containing word a, and function df2(docs, a, b) returns the number of documents containing both words a and b, where docs is a set of documents.
+(1) Let D be a set of documents. For any two words a and b, use the MIM equation and the provided two functions to calculate their MIM.
+(2) Assume the collection of documents is represented as a dictionary {docID: {term: counts, …},…}, for example, docs = {'D1':{'term1':3, 'term4':5, 'term5':7},'D2':{'term1':5, 'term2':3, 'term3':4, 'term4':6}, 'D3':{'term3':5, 'term4':4, 'term5':6}, 'D4' {'term1':9, 'term4':1, 'term5':2}, 'D5':{'term2':1, 'term4':3, 'term5':2},'D6':{'term1':3, 'term3':2, 'term4':4, 'term5':4}}. 
+
+Define a python function df2(docs, a, b) to calculate nab - the number of documents that include both terms a and b.
+
+(3) Assume python function c_df(docs) calculates df value for all terms in docs and returns a {term:df, …} dictionary. Use both functions df2() and c_df() to define a Python function MIM(docs, a, b) to calculate the MIM value for terms a and b.
+
+Asnwer: 
+(1) 
+Let N= |D|, then we have
+P(a)= df(D, a)/ N, P(b)= df(D, b)/N,
+P(a, b) = df2(D, a, b)/N
+So, MIM = log(df2(D, a, b)/N)/(( df(D, a)/ N)*( df(D, b)/N))
+= log[N*df2(D, a, b)/(df(D, a)*df(D, b))]
+
+(2) 
+```python
+
+def df2(docs, a, b):
+    count = 0 # number of documents containing both a and b
+    for doc in docs: # for each document
+        if a in docs[doc] and b in docs[doc]: # if the document contains both a and b
+            count += 1 # increase the count by 1
+    return count # return the count
+```
+
+(3) 
+```python 
+def MIM(docs, a, b): # define a function MIM - which means mutual information measure
+    return np.log(df2(docs, a, b) / (df(docs, a) * df(docs, b))) # return the MIM value where df2 is the function defined in (2) and df is the function defined in (1)
+```
+
 ## Week 8 Review Questions
+### Question 1
+Term frequency Measure
+
+Assume Table 1 is a training set provided by user feedback. A term’s frequency measure is defined as follows:
+
+$$
+tf(t_k) = \frac{\sum_{d_i \in D^+} f_{i_k}}{\sum_{d_i \in D^+} \sum_{t_j \in T} f_{i_j}}
+$$
+Doc_ID | Terms                 | Label (Relevant)
+-------|-----------------------|----------------
+D1     | GERMAN, VW            | 0 no
+D2     | US, US, ECONOM, SPY   | 1 yes
+D3     | US, BILL, ECONOM, ESPIONAG | 1 yes
+D4     | US, ECONOM, ESPIONAG, BILL | 1 yes
+D5     | GERMAN, MAN, VW, ESPIONAG | 0 no
+D6     | GERMAN, GERMAN, MAN, VW, SPY | 0 no
+D7     | US, MAN, VW           | 0 no
+
+
+
+
+
+Calculate term ESPIONAG’s frequency measure, and show your calculation steps:
+
+Answer:
+First thing is get all the terms in a set
+Terms = {US, BILL, ECONOM, ESPIONAG, GERMAN, MA, VW, SPY}
+
+Then, we need to calculate the frequency of each term in each document
+D+ = {D2, D3, D4} # the set of relevant documents where the label is 1 so that term or series of terms are relevant (show up in the relevant documents)
+D- = {D1, D5, D6, D7} # the set of irrelevant documents where the label is 0 so that term or series of terms are irrelevant (show up in the irrelevant documents)
+
+Make a table to calculate the frequency of each term in each document
+
+$f_{ij}$ | US | BILL| ECONOM | ESPIONAG | GERMAN | MAN | VW | SPY|
+---------|----|-----|--------|----------|--------|-----|----|----|
+D1       | 0  | 0   | 0      | 0        | 1      | 0   | 1  | 0  |
+D2       | 2  | 0   | 1      | 0        | 0      | 0   | 0  | 1  |
+D3       | 1  | 1   | 1      | 1        | 0      | 0   | 0  | 0  |
+D4       | 1  | 1   | 1      | 1        | 0      | 0   | 0  | 0  |
+D5       | 0  | 0   | 0      | 1        | 1      | 1   | 1  | 0  |
+D6       | 0  | 0   | 0      | 0        | 2      | 1   | 1  | 1  |
+D7       | 1  | 0   | 0      | 0        | 0      | 1   | 1  | 0  |
+
+Then, we can calculate the frequency measure for each term
+
+to solve the equation we need to look at where ESPIONAG shows up in the relevant documents 
+since we know it shows up in D2, D3, D4, we can calculate the frequency measure for ESPIONAG as follows:
+$$
+tf('ESPIONAG') = (0+1+1)/(4+4+4) = 2/12 = 0.1667
+$$
+
+What this means is that ESPIONAG shows up in 2 out of 12 documents in the training set
+How do we get to that though?
+So the (0+1+1) is the sum of the frequency of ESPIONAG in the relevant documents 0 is the frequency of ESPIONAG in D2, 1 is the frequency of ESPIONAG in D3, 1 is the frequency of ESPIONAG in D4
+The (4+4+4) is the sum of the frequency of all the terms in the relevant documents 4 is the sum of the frequency of all the terms in D2, 4 is the sum of the frequency of all the terms in D3, 4 is the sum of the frequency of all the terms in D4
+
+### Question 2
+Probabilistic Information filtering model
+For a given training set D (or labelled dataset, e.g., a list of lists of terms, where each list of terms denotes a document), which consists of a set of relevant documents Rel and a set of non-relevant documents Nonrel; BM25 based IF model uses the following equation to calculate a term’s weight:
+
+![img](x.png)
+
+Provide equations to calculate N, R, r(t) and n(t), where an equation is a math formula or a python definition.
+
+Answer:
+immediately we can see that N is the total number of documents in the training set D
+so N = |D|  = `len(D)`
+R is the total number of relevant documents in the training set D
+so R = |Rel| = `len(Rel)`
+
+r(t) is the number of relevant documents that contain term t
+so r(t) = |{d in Rel: t in d}| = `len([d for d in Rel if t in d])`
+
+n(t) is the number of non-relevant documents that contain term t
+so n(t) = |{d in Nonrel: t in d}| = `len([d for d in Nonrel if t in d])`
+
+### Question 3. 
+(Pseudo relevance feedback)
+Assume your user provides a query Q = {q1, q2, …, qm} and a data collection C = {d1, d2, …, dN} (unlabelled dataset) and asks you to define a probabilistic IF model by using pseudo relevance
+feedback techniques. After your data exploration of C, and you find that basically the distribution of terms in relevant documents is independent and their distribution in non-relevant documents is independent. And you want to define the probable relevance based only on the presence of search terms in documents. Describe your thoughts on how to design this IF model.
+???
+
+### Question 4. 
+(Distance Function)
+Table 1 shows an example of a binary information table.
+Document | t1 | t2 | t3 | t4 | t5 | t6 | t7
+---------|----|----|----|----|----|----|----
+d1       | 1  | 1  | 0  | 0  | 0  | 0  | 0
+d2       | 0  | 0  | 1  | 1  | 0  | 1  | 0
+d3       | 0  | 0  | 1  | 1  | 1  | 1  | 0
+d4       | 0  | 0  | 1  | 1  | 1  | 1  | 0
+d5       | 1  | 1  | 0  | 0  | 0  | 1  | 1
+d6       | 1  | 1  | 0  | 0  | 0  | 1  | 1
+
+- (1) Draw the binary contingency table of Table 1 for comparing documents d1 and d2.
+- (2) Evaluate the Jaccard distance between d1 and d2.
+- (3) Evaluate the Simple matching coefficient distance between d1 and d2.
+
+
+Answer:
+
+- (1) Draw the binary contingency table of Table 1 for comparing documents d1 and d2.
+![image](QuickAnswer2.png)
+
+
+2. Evaluate the Jaccard distance between d1 and d2.
+$$
+Jaccard(d1, d2) =(r+s) / (q+r+s)
+$$
+
+$$
+Jaccard(d1, d2) = (2+3) / (0+2+3) = 5/5 = 1
+$$
+
+3. Evaluate the Simple matching coefficient distance between d1 and d2.
+$$
+SMC(d1, d2) = (r+s) / (q+r+s+t)
+$$
+
+$$
+SMC(d1, d2) = (2+3) / (0+2+3+2) = 5/7 = 0.7143
+$$
+
+### Question 5.
+(Cluster Precision)
+
+![image](Q5.png)
+
+
+Assume your clustering algorithm produces two (K=2) clusters C1 = {d2, d5, d10} and C2 = {d1, d3, d4, d6, d7, d8, d9}.
+
+- Calculate MaxClass(Ci) for i = 1 and 2.
+- Calculate Cluster Precision for the two clusters.
+
+Answer:
+
+$$
+Label(C1) = `spam`
+$$
+
+$$
+Label(C2) = `not_spam`
+$$
+
+$$
+MaxClass(C1) = {\{d_2, d_5\}}
+$$
+
+$$
+MaxClass(C2) = {\{d_1, d_3, d_6, d_7, d_8, d_9\}}
+$$
+
+2. Calculate Cluster Precision for the two clusters.
+
+$$
+ClusterPrecision = (2 + 6) / (3 + 7) = 8/10 = 0.8
+$$
+
+
+
+
 ## Week 9 Review Questions
 ## Week 10 Review Questions
 ## Week 11 Review Questions
