@@ -868,5 +868,53 @@ $$
 
 
 ## Week 9 Review Questions
+### Question 1. 
+Let T = {t1, t2, …, tk} be a set of terms, D be a training set of documents, which consists of a set of positive documents D+; and a set of negative documents D-. Assume X is a termset. Which of the following is false?
+
+- (1) X is a set of terms, that is $ X \subseteq T $.
+- (2)  The covering set of $X$ includes all docuements d such that $X \subseteq d$, denothing as [X] = {d | d ∈ D, X ⊆ d}.
+- (3) X is called a frequent pattern if its support (|[X]|/|D+|) => min_sup, a minimum support.
+- (4) X is called an interesting pattern if it is a frequent pattern and its confidence (|[X]|/N(X)) => min_conf, a minimum confidence where N(X) is the number of documents where Nx = |{d| d ∈ D, X ⊆ d}|.
+
+Answer: 2
+The covering set of X includes all relevant documents d such that X ⊆ d denoting as [X] = {d | d ∈ D+, X ⊆ d}.
+
+### Question 2.
+pattern mining
+Given the following complete transaction database for a training set of documents, where “yes” means relevant and “no” means non-relevant:
+
+Transaction | Terms         | Label
+------------|---------------|------
+1           | t1 t2 t3 t7   | yes
+2           | t3 t4 t6      | yes
+3           | t3 t4 t5 t6   | yes
+4           | t3 t4 t5 t6   | yes
+5           | t1 t2 t6 t7   | yes
+6           | t1 t2 t7      | yes
+7           | t1 t2         | no
+8           | t3 t4         | no
+9           | t1 t2 t5      | no
+10          | t1 t3         | no
+
+- (1) Write all interesting patterns if min_sup = 50% and min_conf = 90%.
+
+- (2) Write the covering sets of patterns `<t1 t2 t7>, <t4 t6> and <t6>`, and explain why `<t4 t6> `is a non-closed pattern.
+
+Answer:
+
+- (1) Write all interesting patterns if min_sup = 50% and min_conf = 90%.
+![img](week9Q2.png)
+![img](part2.png)
+- (2) Write the covering sets of patterns `<t1 t2 t7>`, `<t4 t6>` and `<t6`>, and explain why `<t4 t6>` is a non-closed pattern.
+[`<t1 t2 t7>`] = {1, 5, 6}
+[`<t4 t6>`] = {2, 3, 4}
+[`<t6>`] = {2, 3, 4, 5,6 }
+t4 t6> is a non-closed pattern because
+C(`<t4 t6>`)= termset([2,3,4])= `<t3 t4 t6> != <t4 t6>`
+
+
 ## Week 10 Review Questions
+- Too much shit to copy over :)
+- just look at the review q's
+
 ## Week 11 Review Questions
